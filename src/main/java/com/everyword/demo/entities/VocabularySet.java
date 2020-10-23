@@ -1,6 +1,8 @@
 package com.everyword.demo.entities;
 
 import lombok.Data;
+import org.hibernate.annotations.NotFound;
+import org.hibernate.annotations.NotFoundAction;
 
 import javax.persistence.*;
 import java.util.List;
@@ -13,14 +15,13 @@ public class VocabularySet {
     @Id
     @GeneratedValue
     @Column(name="id")
-    private int id;
+    private Integer id;
 
     @Column(name="name")
     private String name;
 
-    @OneToMany(cascade = CascadeType.ALL)
+    @OneToMany
     @JoinColumn(name= "phrase_id", nullable = false)
-    private List<Phrase> phraseId;
-
+    private List<Phrase> phrases;
 
 }
